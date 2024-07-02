@@ -7,13 +7,13 @@
             <h2>Nothing to show...</h2>
         </div>
     <% } else { %>
-            <% blogs.forEach( (blog) => { %>
+            <% blogs.forEach( (blog, index) => { %>
             <article class="blog-post container">
                 <h1 name="title"><%= blog.title %></h1>
                 <h2 name="author">By <%= blog.author %></h2>                
                 <p class="fs-4" name="content"><%= blog.content %></p>
 
-                <form action="/update" method="POST">
+                <form action="/update?<%= index %>" method="POST">
                     <input type="hidden" name="title" value="<%= blog.title %>">
                     <input type="hidden" name="author" value="<%= blog.author %>">
                     <input type="hidden" name="content" value="<%= blog.content %>">
