@@ -5,10 +5,11 @@ const app = express();
 const port = 3000;
 
 
-const blogs = [{title : "Sample Blog", author : "Arun", content : "Nothing much to say, as it's just a sample content."}];
+const blogs = [{title : "Sample Blog", author : "Arun", content : "Nothing much to say, as it's just a sample content. I'm still figuring out databases, so for time being, your blogs are stored in an in-memory array. But hey, if the server restarts, say goodbye to all your contents."}];
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
 app.use((req, res, next)=>{
     res.locals.path = "";
     res.locals.blogs = blogs;
@@ -30,7 +31,8 @@ app.get("/create", (req, res) => {
 
 app.get("/view", (req, res) => {
     res.render("view.ejs", {
-        path : "/view"
+        path : "/view",
+        blogs : blogs,
     });
 });
 
@@ -41,9 +43,25 @@ app.post("/submit", (req, res) => {
     res.redirect("/view");
 } );
 
+app.get("/update", (req, res) => {
+    const index = req.query.index;
+    const blog = blogs[index];
+    res.render("update.ejs",{
+        index,
+        blog
+    });
+});
+
 app.post("/update", (req, res)=> {
-    console.log(req.body);
-    res.render("update.ejs", req.body);
+    const { index, title, author, content } = req.body;
+    blogs[index] = { title, author, content };
+    res.redirect("/view");
+});
+
+app.post("/delete", (req, res) => {
+    const index = req.body.index;
+    blogs.splice(index,1);
+    res.redirect("/view");
 });
 
 app.listen(port, () => {

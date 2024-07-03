@@ -6,21 +6,22 @@
 
     <div class="container">
 
-        <form action="/view" method="POST" class="pb-4">
+        <form action="/update" method="POST" class="pb-4">
+            <input type="hidden" name="index" value="<%= index %>">
 
             <div class="mb-3">
                 <label for="author" class="form-label">Name</label>
-                <input type="text" class="form-control" name="author" id="author" placeholder="Your Name" value="<%= author %>">
+                <input type="text" class="form-control" name="author" id="author" placeholder="Your Name" value="<%= blog.author %>">
             </div>
             
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="Your Blog title" value="<%= title %>">
+                <input type="text" class="form-control" name="title" id="title" placeholder="Your Blog title" value="<%= blog.title %>">
             </div>
             
             <div class="mb-3">
                 <label for="content" class="form-label">The Blog</label>
-                <textarea class="form-control" name="content" id="content" rows="10"><%= content %></textarea>
+                <textarea class="form-control" name="content" id="content" rows="10"><%= blog.content %></textarea>
 
             </div>
 
@@ -29,8 +30,9 @@
         </form>
 
         <form action="/delete" method="POST" class="pb-4">
+            <input type="hidden" name="index" value="<%= index %>">
             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-
+        </form>
     </div>
 
 </main>

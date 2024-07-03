@@ -13,10 +13,8 @@
                 <h2 name="author">By <%= blog.author %></h2>                
                 <p class="fs-4" name="content"><%= blog.content %></p>
 
-                <form action="/update?<%= index %>" method="POST">
-                    <input type="hidden" name="title" value="<%= blog.title %>">
-                    <input type="hidden" name="author" value="<%= blog.author %>">
-                    <input type="hidden" name="content" value="<%= blog.content %>">
+                <form action="/update" method="GET">
+                    <input type="hidden" name="index" value="<%= index %>">
                     <button type="submit" class="btn btn-outline-primary">Update</button>
                 </form>
 
