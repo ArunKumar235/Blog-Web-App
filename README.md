@@ -20,7 +20,7 @@ This Node.js application is a simple blog web application where users can create
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/YourUsername/Blog-Web-App.git
+    git clone https://github.com/ArunKumar235/Blog-Web-App.git
     ```
 2. Navigate to the project directory:
     ```sh
