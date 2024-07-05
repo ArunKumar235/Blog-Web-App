@@ -1,3 +1,6 @@
+// q: what is the purpose of this file?
+// a: This file is the entry point of the application. It creates an express server and listens on port 3000. It also defines routes for the application.
+
 import express from "express";
 import bodyParser from "body-parser";
 
